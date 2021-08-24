@@ -54,4 +54,12 @@ public class AppController {
         return "feedback_success";
     }
 
+    @GetMapping("/feedbackList")
+    @PermitAll
+    public String feedbackList(Model model) {
+        List<Feedback> feedbackList = feedbackService.getFeedbackList();
+        model.addAttribute("feedbackList", feedbackList);
+        return "feedback_list";
+    }
+
 }

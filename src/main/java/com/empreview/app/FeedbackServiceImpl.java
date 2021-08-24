@@ -3,6 +3,8 @@ package com.empreview.app;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FeedbackServiceImpl {
 
@@ -22,5 +24,9 @@ public class FeedbackServiceImpl {
         feedbackRepository.save(feedback);
 
         return "Feedback submitted successfully.";
+    }
+
+    public List<Feedback> getFeedbackList() {
+        return feedbackRepository.findAll();
     }
 }
