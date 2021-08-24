@@ -3,9 +3,7 @@ package com.empreview.app;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.PermitAll;
 import java.util.Arrays;
@@ -15,7 +13,10 @@ import java.util.List;
 public class AppController {
 
     @Autowired
-    private Feedback feedback;
+    private FeedbackDao feedbackDao;
+
+    @Autowired
+    private FeedbackServiceImpl feedbackService;
 
     // Login form
 //    @GetMapping("/login")
@@ -37,14 +38,20 @@ public class AppController {
         return "greeting";
     }
 
-    @RequestMapping("/feedback")
+    @GetMapping("/feedback")
     @PermitAll
-    public String saveFeedBack(Model model) {
-
-        model.addAttribute("feedback", feedback);
+    public String feedBack(Model model) {
+        model.addAttribute("feedbackDao", feedbackDao);
         List<String> userList = Arrays.asList("Person1", "Person2", "Person3", "Person4");
         model.addAttribute("userList", userList);
         return "feedback_form";
+    }
+
+    @PostMapping("/feedback")
+    @PermitAll
+    public String submitFeedback(@ModelAttribute("feedbackDao") FeedbackDao feedbackDao) {
+        String msg = feedbackService.submitFeedback(feedbackDao);
+        return "feedback_success";
     }
 
 }

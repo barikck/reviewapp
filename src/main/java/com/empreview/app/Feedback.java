@@ -20,9 +20,11 @@ import javax.persistence.Entity;
 @Setter
 @ToString
 public class Feedback extends BaseEntity {
-    private int rating;
-    private String description;
     private String feedbackFrom;
     private String feedbackTo;
+    private String formName;
+    private String reportName;
+    private int rating;
+    private String description;
 
 }
