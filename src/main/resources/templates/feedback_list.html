@@ -21,19 +21,41 @@
 
 <div align="center">
         <form action="#" th:action="@{/feedbackList}" method="get">
-            <br><br>
-            <h1><p class="text-center">Feedback List</p></h1>
-            <div class="table-responsive table-bordered table-hover" >
+<!--            <br><br>-->
+
+            <nav class="navbar navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="../src/main/resources/images/logo.png" width="120" height="30" class="d-inline-block align-top" alt="">
+                    Home
+                </a>
+
+                <form class="form-inline my-auto my-lg-0">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Welcome S. Gupta
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="#">#</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </form>
+            </nav>
+            <br>
+            <h2><p class="text-left">Recent Feedbacks</p></h2>
+            <div class="table-responsive table-borderless table-hover" >
                 <table class="table" width="500px">
                     <thead  class="thead-dark">
                         <tr>
                             <th>Name</th>
+                            <th>Report Name</th>
                             <th>Rating</th>
                             <th>Description</th>
                         </tr>
                     </thead>
                     <tr th:each="feedback : ${feedbackList}">
                         <td th:text="${feedback.getFeedbackTo}">Name</td>
+                        <td th:text="${feedback.getReportName}">Report Name</td>
                         <td th:text="${feedback.getRating}">Rating</td>
                         <td th:text="${feedback.getDescription}">Description</td>
                     </tr>
@@ -41,10 +63,12 @@
 
             </div>
             <br><br>
-            <button type="button" class="btn btn-outline-primary" ><a th:href="@{/feedback}">back</a></button>
+
 
 
         </form>
+
 </div>
+<button type="button" class="btn btn-outline-primary" ><a th:href="@{/feedback}">Submit New Form</a></button>
 </body>
 </html>
