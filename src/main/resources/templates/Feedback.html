@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>test page</title>
+    <link rel="stylesheet" href=
+            "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity=
+                  "sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+
+    <script src=
+                    "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <script src=
+                    "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <script src=
+                    "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+
+    <style>
+        .btn-block {
+            block-size: 30px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+
+            // Denotes total number of rows
+            var rowIdx = 0;
+
+            // jQuery button click event to add a row
+            $('#addBtn').on('click', function () {
+
+                // Adding a row inside the tbody.
+                $('#tbody').append(`<tr id="R${++rowIdx}">
+			<td class="row-index text-center">
+			<p>${rowIdx}</p>
+			</td>
+			<td>
+			    <select class="custom-select-sm" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </td>
+			<td>
+                <select class="custom-select-sm" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+			<td>
+			    <textarea class="form-control-sm" aria-label="With textarea" th:field="*{description}"></textarea>
+            </td>
+			<td  align="center">
+				<img src="../src/main/resources/images/trash.svg" width="10" type="btn" class="btn-block">
+			</td>
+			</tr>`);
+            });
+
+            // jQuery button click event to remove a row.
+            $('#tbody').on('click', '.remove', function () {
+
+                // Getting all the rows next to the row
+                // containing the clicked button
+                var child = $(this).closest('tr').nextAll();
+
+                // Iterating across all the rows
+                // obtained to change the index
+                child.each(function () {
+
+                    // Getting <tr> id.
+                    var id = $(this).attr('id');
+
+                    // Getting the <p> inside the .row-index class.
+                    var idx = $(this).children('.row-index').children('p');
+
+                    // Gets the row number from <tr> id.
+                    var dig = parseInt(id.substring(1));
+
+                    // Modifying row index.
+                    idx.html(`Row ${dig - 1}`);
+
+                    // Modifying row id.
+                    $(this).attr('id', `R${dig - 1}`);
+                });
+
+                // Removing the current row.
+                $(this).closest('tr').remove();
+
+                // Decreasing total number of rows by 1.
+                rowIdx--;
+            });
+        });
+    </script>
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="../src/main/resources/images/logo3.png" width="120" height="30" class="d-inline-block align-top"
+             alt="">
+        Feedback
+    </a>
+    <
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            Welcome S. Gupta
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+            <button class="dropdown-item" type="button">Sign out</button>
+        </div>
+    </div>
+</nav>
+<div class="container pt-5">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Description</th>
+                <th class="text-center">Remove</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <button class="btn btn-md btn-dark"
+            id="submitBtn" type="button">
+        Submit
+    </button>
+    <button class="btn btn-md btn-dark"
+            id="addBtn" type="button">
+        Add new Row
+    </button>
+</div>
+</body>
+
+</html>

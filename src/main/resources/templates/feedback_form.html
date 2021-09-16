@@ -4,74 +4,75 @@
     <meta charset="ISO-8859-1">
     <title>Feedback Form</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-            integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"-->
+<!--          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"-->
+<!--            integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
         tr {
             border-style: hidden;
         }
-
     </style>
-
 </head>
 <body>
 
 <div>
         <form action="#" th:action="@{/feedback}" method="post" th:object="${feedbackDao}">
+<!--            <nav class="navbar-expand-lg navbar-dark bg-dark">-->
+<!--                <a class="navbar-brand" href="#">-->
+<!--                    <img src="../src/main/resources/images/logo3.png" width="120" height="30" class="d-inline-block align-top" alt="">-->
+<!--                    Feedback Form-->
+<!--                </a>-->
+<!--            </nav>-->
+
             <nav class="navbar navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">
-                    <img src="../src/main/resources/images/logo.png" width="120" height="30" class="d-inline-block align-top" alt="">
-                    Feedback Form
+                    <img src="../src/main/resources/images/logo3.png" width="120" height="30" class="d-inline-block align-top" alt="">
+                    Home
                 </a>
 
-                <form class="form-inline my-auto my-lg-0">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Welcome S. Gupta
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Logout</a>
-                        <a class="dropdown-item" href="#">#</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </form>
+<!--                <div class="nav-item dropdown">-->
+<!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        Welcome S. Gupta-->
+<!--                    </a>-->
+<!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                        <div class="dropdown-divider"></div>-->
+<!--                        <a class="dropdown-item" href="#">Sign out</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <<div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Welcome S. Gupta
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                    <button class="dropdown-item" type="button">Sign out</button>
+                </div>
+            </div>
             </nav>
-            <div class="table-responsive-sm" >
+
+            <div class="table-responsive-md" >
                 <table class="table">
-<!--                    <tr>-->
-<!--                        <td>-->
-<!--                            <h1><p class="text-left">Feedback Form</p></h1>-->
-<!--                        </td>-->
-<!--                    </tr>-->
                     <tr>
                         <td>
-                            <div class="input-group">
+                            <div class="input-group shadow-sm">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">User</label>
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect01" th:field="*{feedbackTo}">
-                                    <option value="" selected>Select an user..</option>
+                                    <option value="" selected>Select user..</option>
                                     <option th:each="p : ${userList}" th:value="${p}" th:text="${p}"></option>
                                 </select>
-                            </div>
+<!--                            </div>-->
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" >Form Name</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" th:field="*{formName}">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group">
+                            <div class="input-group  shadow-sm">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Report Name</span>
                                 </div>
@@ -81,7 +82,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <div class="input-group">
+                            <div class="input-group  shadow-sm">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text">Rating</label>
                                 </div>
@@ -99,7 +100,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <div class="input-group">
+                            <div class="input-group shadow-sm">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Description</span>
                                 </div>
@@ -109,8 +110,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <button type="submit" class="btn btn-outline-primary">Submit Feedback</button>
-                            <button type="button" class="btn btn-outline-primary" ><a th:href="@{/feedbackList}">Back</a></button>
+                            <button type="submit" class="btn btn-dark shadow">Submit Feedback</button>
+                            <button type="button" class="btn btn-dark shadow" ><a th:href="@{/feedbackList}">Back</a></button>
                         </td>
                     </tr>
                 </table>

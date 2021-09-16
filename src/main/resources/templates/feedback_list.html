@@ -9,23 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
             integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
-<!--    <style>-->
-<!--        tr {-->
-<!--            border-style: wave;-->
-<!--        }-->
-
-<!--    </style>-->
-
 </head>
 <body>
 
 <div align="center">
         <form action="#" th:action="@{/feedbackList}" method="get">
-<!--            <br><br>-->
 
             <nav class="navbar navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
-                    <img src="../src/main/resources/images/logo.png" width="120" height="30" class="d-inline-block align-top" alt="">
+                <a class="navbar-brand bg-transparent">
+                    <img src="../src/main/resources/images/logo3.png" width="120" height="30" class="d-inline-block align-top" alt="">
                     Home
                 </a>
 
@@ -44,7 +36,7 @@
             <br>
             <h2><p class="text-left">Recent Feedbacks</p></h2>
             <div class="table-responsive table-borderless table-hover" >
-                <table class="table" width="500px">
+                <table class="table">
                     <thead  class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -56,11 +48,10 @@
                     <tr th:each="feedback : ${feedbackList}">
                         <td th:text="${feedback.getFeedbackTo}">Name</td>
                         <td th:text="${feedback.getReportName}">Report Name</td>
-                        <td th:text="${feedback.getRating}">Rating</td>
+                        <td th:text="${feedback.getRating}">Rating</td>0
                         <td th:text="${feedback.getDescription}">Description</td>
                     </tr>
                 </table>
-
             </div>
             <br><br>
 
